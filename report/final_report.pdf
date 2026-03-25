@@ -1,0 +1,205 @@
+Big Data Pipeline for Airline Tweet 
+Sentiment Analysis 
+Course: Big Data Processing 
+Submission Date: April 7, 2026 
+Team Members 
+Member 1 — Data Ingestion & MongoDB 
+Member 2 — Spark Processing & SQL 
+Member 3 — Visualization & Report 
+1. Introduction 
+1.1 Overview 
+This project implements a complete Big Data processing pipeline using Apache Spark and 
+MongoDB to ingest, process, analyse, and store large-scale Twitter data about US airline 
+sentiment. The goal is to demonstrate real-world Big Data engineering skills using industry
+standard tools. 
+1.2 Dataset 
+The Twitter US Airline Sentiment dataset was selected for this project. It contains public 
+tweets directed at major US airlines collected in February 2015, pre-labelled with sentiment 
+categories. 
+Detail 
+Information 
+Dataset Name 
+Twitter US Airline Sentiment 
+Source 
+Kaggle 
+Total Records 
+14,478 tweets 
+Airlines Covered 
+United, US Airways, American, Southwest, Delta, Virgin 
+America 
+Time Period 
+February 2015 
+Sentiment Labels 
+Positive, Neutral, Negative 
+1.3 Problem Statement 
+Airlines receive thousands of customer complaints and compliments on social media daily. 
+Processing and analysing this data at scale can reveal critical insights about service quality, 
+customer pain points, and airline performance. Traditional tools cannot handle this volume 
+efficiently, making Big Data technologies essential. 
+1.4 Project Objectives 
+• Ingest and clean raw tweet data using Apache Spark 
+• Store processed data in MongoDB with an optimized schema 
+• Perform large-scale analysis using Spark SQL and PySpark 
+• Compare query performance between Spark SQL and MongoDB Aggregation 
+• Generate meaningful visualizations and insights 
+2. Methodology 
+2.1 Tools & Technologies 
+Tool Version Purpose 
+Apache Spark (PySpark) 4.1.1 Large-scale data processing 
+MongoDB 7.0 NoSQL data storage 
+Python 3.x Programming language 
+Pandas Latest Data manipulation 
+Matplotlib & Seaborn Latest Data visualization 
+Java JDK 17.0 Spark runtime environment 
+Jupyter Notebook Latest Development environment 
+ 
+2.2 Pipeline Architecture 
+The pipeline follows a structured 5-step approach: 
+• Step 1 — Data Ingestion: Load raw CSV into Spark, clean and preprocess 
+• Step 2 — Spark Processing: Apply transformations, groupBy, word frequency analysis 
+• Step 3 — MongoDB Storage: Insert clean data with optimized indexes 
+• Step 4 — Spark SQL: Run complex SQL queries and performance benchmarks 
+• Step 5 — Visualization: Generate charts and extract key business insights 
+ 
+2.3 MongoDB Schema Design 
+The data is stored in a single collection with the following structure: 
+Field Type Description 
+tweet_id String Unique identifier for each tweet 
+airline_sentiment String Sentiment label: positive / neutral / negative 
+Field Type Description 
+airline_sentiment_confidence Float Confidence score (0.0 to 1.0) 
+negativereason String Reason for negative sentiment (if applicable) 
+airline String Airline name 
+retweet_count Integer Number of retweets 
+text String Original tweet text 
+clean_text String Cleaned tweet text (processed) 
+tweet_created String Tweet creation timestamp 
+tweet_location String User location (if available) 
+ 
+2.4 MongoDB Indexing Strategy 
+Six indexes were created to optimize query performance: 
+Index Type Purpose 
+airline Single field Fast filtering by airline name 
+airline_sentiment Single field Fast sentiment-based queries 
+negativereason Single field Fast negative reason lookups 
+tweet_id Single field Unique tweet identification 
+airline + airline_sentiment Compound Optimized airline+sentiment queries 
+ 
+  
+3. Implementation 
+3.1 Data Ingestion & Cleaning (Notebook 01) 
+• Loaded raw Tweets.csv using spark.read.csv () with inferSchema 
+• Selected 9 relevant columns from original 15 
+• Removed rows with null values in key columns (tweet_id, airline, text) 
+• Removed duplicate tweet_ids to ensure data integrity 
+• Cleaned tweet text: removed @mentions, URLs, and special characters 
+• Final clean dataset: 14,478 records successfully stored in MongoDB 
+3.2 Spark Processing (Notebook 02) 
+• Computed overall sentiment distribution across all tweets 
+• Broke down sentiment by individual airline 
+• Calculated average sentiment confidence scores per airline 
+• Identified top 10 negative complaint reasons 
+• Performed word frequency analysis on negative tweets (with stopword removal) 
+• Identified most retweeted tweets per airline 
+3.3 MongoDB Queries (Notebook 03) 
+• Used aggregation pipeline to compute sentiment counts 
+• Grouped by airline and sentiment for detailed breakdown 
+• Identified top 10 negative reasons using $match and $group 
+• Measured query execution time with index vs without index 
+• Identified best and worst performing airlines 
+3.4 Spark SQL Queries (Notebook 04) 
+• Registered cleaned DataFrame as a temporary SQL view 
+• Computed sentiment distribution with percentage using window functions 
+• Generated airline scorecard showing positive/neutral/negative counts 
+• Analysed top negative reason per airline 
+• Measured hourly tweet activity patterns 
+• Compared Spark SQL vs MongoDB aggregation performance (3-run average) 
+3.5 Performance Note 
+Parquet format was tested for bonus points but could not be implemented due to a known 
+Windows + Hadoop native library limitation in the local development environment. In a 
+Linux or cloud environment (AWS EMR, Google Dataproc), Parquet would provide 3-5x faster 
+read speeds and 60-70% storage reduction compared to CSV format. 
+4. Results & Insights 
+4.1 Overall Sentiment Distribution 
+Sentiment Count Percentage 
+Negative 9,110 63% 
+Neutral 3,069 21% 
+Positive 2,299 16% 
+ 
+Key finding: Nearly two-thirds of all airline tweets are negative, indicating widespread 
+customer dissatisfaction across the industry. 
+ 
+4.2 Airline Performance Rankings 
+Rank Airline Negative Tweets Positive Tweets 
+1 (Worst) United 2,630 492 
+2 US Airways 2,263 269 
+3 American 1,863 307 
+4 Southwest 1,185 570 
+5 Delta 953 544 
+6 (Best) Virgin America 181 152 
+ 
+4.3 Top Complaint Reasons 
+Rank Reason Count 
+1 Customer Service Issue 2,883 
+2 Late Flight 1,648 
+Rank Reason Count 
+3 Can't Tell 1,175 
+4 Cancelled Flight 829 
+5 Lost Luggage 717 
+6 Bad Flight 575 
+7 Flight Booking Problems 523 
+8 Flight Attendant Complaints 475 
+ 
+4.4 Query Performance Comparison 
+Tool Query Type Performance 
+MongoDB Simple aggregation with index Faster for indexed lookups 
+Spark SQL Complex multi-column analysis Better for large 
+transformations 
+MongoDB Count by sentiment ~0.07 sec with index 
+Spark SQL Count by sentiment Varies by cluster size 
+ 
+4.5 Key Visualizations 
+The following charts were generated and saved to the report folder: 
+• Chart 1: Pie chart showing overall sentiment distribution (63% negative, 21% neutral, 
+16% positive) 
+• Chart 2: Grouped bar chart comparing sentiment across all 6 airlines 
+• Chart 3: Horizontal bar chart showing top 10 negative complaint reasons 
+• Chart 4: Heatmap showing average sentiment confidence score per airline 
+• Chart 5: Bar chart comparing Spark SQL vs MongoDB query execution time 
+ 
+  
+5. Conclusions 
+5.1 Lessons Learned 
+• Apache Spark is highly effective for large-scale data cleaning and transformation 
+• MongoDB indexing significantly improves query performance for simple lookups 
+• Spark SQL provides more flexibility for complex multi-column analytical queries 
+• Windows environment has limitations with Hadoop native libraries (Parquet support) 
+• Compound indexes in MongoDB optimize frequently combined query patterns 
+• Data cleaning is critical — raw tweet text contains noise that affects analysis quality 
+5.2 Key Business Insights 
+• United Airlines has the most negative customer feedback and needs urgent service 
+improvements 
+• Customer service is the number one complaint across all airlines (2,883 tweets) 
+• Southwest Airlines has the best positive-to-negative ratio among major carriers 
+• Flight delays and cancellations are the second biggest pain point after customer 
+service 
+• Virgin America, despite fewer tweets, has the healthiest sentiment distribution 
+5.3 Potential Improvements 
+• Implement real-time tweet streaming using Spark Streaming or Kafka 
+• Build a machine learning sentiment classifier using Spark MLlib 
+• Deploy on cloud infrastructure (AWS EMR or Google Dataproc) for full Hadoop 
+support 
+• Implement Parquet and Avro format comparison on a Linux environment 
+• Build an interactive dashboard using Streamlit or Gradio 
+• Extend analysis to include more recent airline tweet data 
+5.4 GitHub Repository 
+The complete project codebase including all notebooks, dataset, and documentation is 
+available on GitHub. All team member contributions are visible through individual commits. 
+References 
+• Apache Spark Documentation — https://spark.apache.org/docs/latest/ 
+• MongoDB Documentation — https://www.mongodb.com/docs/ 
+• Twitter US Airline Sentiment Dataset — 
+https://www.kaggle.com/crowdflower/twitter-airline-sentiment 
+• PySpark SQL Guide — https://spark.apache.org/docs/latest/sql-programming
+guide.html 
+Seaborn Visualization Library — https://seaborn.pydata.org/ 

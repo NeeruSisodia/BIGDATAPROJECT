@@ -1,0 +1,14 @@
+# ignore large raw data
+data/*.csv
+data/*.zip
+data/*.parquet
+
+# Jupyter auto files
+.ipynb_checkpoints/
+
+# Python cache
+__pycache__/
+
+# system files
+.DS_Store
+Thumbs.db
