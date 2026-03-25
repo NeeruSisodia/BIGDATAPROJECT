@@ -8,13 +8,14 @@ Manasha Siriwardana Mudalige Don — Notebook: 02_spark_processing.ipynb
 Md Firoz Chowdhury — Notebook: 03_mongodb_queries.ipynb
 Aung Debora — Notebook: 04_spark_sql_queries.ipynb
 Neeru Neeru— Notebook: 05_visualization.ipynb  and upload project on GitHub, analyze reports
- 
+
+ 
 1. Introduction
 1.1 Overview
-This project implements a complete Big Data processing pipeline using Apache Spark and MongoDB to ingest, process, analyse, and store large-scale Twitter data about US airline sentiment. The goal is to demonstrate real-world Big Data engineering skills using industry-standard tools.
+This project implements a complete Big Data processing pipeline using Apache Spark and MongoDB to ingest, process, analyze, and store large-scale Twitter data about US airline sentiment. The goal is to demonstrate real-world Big Data engineering skills using industry-standard tools.
 
 1.2 Dataset
-The Twitter US Airline Sentiment dataset was selected for this project. It contains public tweets directed at major US airlines collected in February 2015, pre-labelled with sentiment categories.
+The Twitter US Airline Sentiment dataset was selected for this project. It contains public tweets directed at major US airlines collected in February 2015, pre-labeled with sentiment categories.
 
 Detail	Information
 Dataset Name	Twitter US Airline Sentiment
@@ -25,7 +26,7 @@ Time Period	February 2015
 Sentiment Labels	Positive, Neutral, Negative
 
 1.3 Problem Statement
-Airlines receive thousands of customer complaints and compliments on social media daily. Processing and analysing this data at scale can reveal critical insights about service quality, customer pain points, and airline performance. Traditional tools cannot handle this volume efficiently, making Big Data technologies essential.
+Airlines receive thousands of customer complaints and compliments on social media daily. Processing and analyzing this data at scale can reveal critical insights about service quality, customer pain points, and airline performance. Traditional tools cannot handle this volume efficiently, making Big Data technologies essential.
 
 1.4 Project Objectives
 •	Ingest and clean raw tweet data using Apache Spark
@@ -80,7 +81,7 @@ airline + airline_sentiment	Compound	Optimized airline+sentiment queries
  
 3. Implementation
 3.1 Data Ingestion & Cleaning (Notebook 01)
-•	Loaded raw Tweets.csv using spark.read.csv () with inferSchema
+•	Loaded raw Tweets.csv using spark.read.csv() with inferSchema
 •	Selected 9 relevant columns from original 15
 •	Removed rows with null values in key columns (tweet_id, airline, text)
 •	Removed duplicate tweet_ids to ensure data integrity
@@ -189,8 +190,7 @@ The complete project codebase including all notebooks, dataset, and documentatio
 References
 •	Apache Spark Documentation — https://spark.apache.org/docs/latest/
 •	MongoDB Documentation — https://www.mongodb.com/docs/
-•	Twitter US Airline Sentiment Dataset 
-https://www.kaggle.com/crowdflower/twitter-airline-sentiment
+•	Twitter US Airline Sentiment Dataset — https://www.kaggle.com/crowdflower/twitter-airline-sentiment
 •	PySpark SQL Guide — https://spark.apache.org/docs/latest/sql-programming-guide.html
 •	Seaborn Visualization Library — https://seaborn.pydata.org/
 
