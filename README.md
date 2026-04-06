@@ -33,7 +33,7 @@ The pipeline covers:
 | Manasha Siriwardana Mudalige Don| Spark processing & transformations |
 | Md Firoz Chowdhury | MongoDB queries & indexing |
 | Aung Debora| Spark SQL queries & performance analysis |
-| Neeru Neeru| Visualization, report, dashboard & documentation |
+| Neeru Neeru| Visualization, report, dashboard & documentation also git process|
 
 ---
 
