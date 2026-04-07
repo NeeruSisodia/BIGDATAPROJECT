@@ -42,7 +42,7 @@ The pipeline covers:
 |--------|------|
 | **Name** | Twitter US Airline Sentiment |
 | **Source** | Kaggle |
-| **Records** | 14,478 tweets (after cleaning) |
+| **Records** | ~14.6k raw tweets; 14,478 records after cleaning |
 | **Airlines** | United, US Airways, American, Southwest, Delta, Virgin America |
 | **Period** | February 2015 |
 | **Labels** | Positive, Neutral, Negative |
@@ -129,6 +129,11 @@ os.environ["HADOOP_HOME"]    = r"C:\hadoop"
 os.environ["PYSPARK_PYTHON"] = r"C:\Users\hp\anaconda3\envs\pyspark_env\python.exe"
 ```
 
+
+### ⚠️ Local Path Configuration
+Users should update `JAVA_HOME` and `PYSPARK_PYTHON` according to their own system before running the notebooks. Local file paths may differ across team members' computers, so paths should be adjusted if needed.
+
+
 ### Step 4 — Start MongoDB
 ```bash
 net start MongoDB
@@ -154,6 +159,9 @@ jupyter notebook
 | 4th | `04_spark_sql_queries.ipynb` | Spark SQL & performance comparison |
 | 5th | `05_visualization.ipynb` | Generate all charts |
 | 6th | `06_format_comparison.ipynb` | CSV vs Parquet vs Avro (Google Colab) |
+
+### ✅ Recommended Execution Order
+For best results, the notebooks should be run in the listed order because later steps depend on the cleaned data, MongoDB collection, and outputs generated in earlier notebooks.
 
 ### Streamlit Dashboard (Bonus)
 ```bash
