@@ -4,14 +4,14 @@ import plotly.express as px
 import plotly.graph_objects as go
 from pymongo import MongoClient
 
-# ─── PAGE CONFIG ──────────────────────────────────────────
+# PAGE CONFIG 
 st.set_page_config(
     page_title="Airline Tweet Sentiment Dashboard",
     page_icon="✈️",
     layout="wide"
 )
 
-# ─── LOAD DATA FROM MONGODB ───────────────────────────────
+#  LOAD DATA FROM MONGODB 
 @st.cache_data
 def load_data():
     client = MongoClient("mongodb://localhost:27017/")
@@ -20,7 +20,7 @@ def load_data():
     data = list(collection.find({}, {"_id": 0}))
     df = pd.DataFrame(data)
 
-    #  THIS IS THE CRITICAL FIX — convert string to float
+    #  convert string to float
     df["airline_sentiment_confidence"] = pd.to_numeric(
         df["airline_sentiment_confidence"], errors="coerce"
     )
@@ -30,7 +30,7 @@ def load_data():
 
     return df
 
-# ─── HEADER ───────────────────────────────────────────────
+#  HEADER 
 st.title("✈️ Airline Tweet Sentiment Analysis")
 st.markdown("**Big Data Pipeline — Apache Spark & MongoDB**")
 st.markdown("---")
@@ -39,7 +39,7 @@ st.markdown("---")
 with st.spinner("Loading data from MongoDB..."):
     df = load_data()
 
-# ─── SIDEBAR FILTERS ──────────────────────────────────────
+# SIDEBAR FILTERS 
 st.sidebar.title("🔍 Filters")
 st.sidebar.markdown("---")
 
@@ -62,7 +62,7 @@ st.sidebar.markdown("---")
 st.sidebar.metric("Total Tweets", f"{len(filtered_df):,}")
 st.sidebar.metric("Airlines", filtered_df["airline"].nunique())
 
-# ─── TOP METRICS ──────────────────────────────────────────
+# TOP METRICS
 col1, col2, col3, col4 = st.columns(4)
 
 total = len(filtered_df)
@@ -80,7 +80,7 @@ col4.metric("😠 Negative", f"{negative:,}",
 
 st.markdown("---")
 
-# ─── ROW 1: PIE CHART + BAR CHART ─────────────────────────
+#ROW 1 : PIE CHART + BAR CHART 
 col1, col2 = st.columns(2)
 
 with col1:
@@ -113,7 +113,7 @@ with col2:
 
 st.markdown("---")
 
-# ─── ROW 2: NEGATIVE REASONS + HEATMAP ────────────────────
+#ROW 2: NEGATIVE REASONS + HEATMAP 
 col1, col2 = st.columns(2)
 
 with col1:
@@ -157,7 +157,7 @@ with col2:
 
 st.markdown("---")
 
-# ─── ROW 3: AIRLINE SCORECARD TABLE ───────────────────────
+# ROW 3: AIRLINE SCORECARD TABLE 
 st.subheader("🏆 Airline Scorecard")
 scorecard = filtered_df.groupby("airline")["airline_sentiment"].value_counts().unstack(fill_value=0)
 for col in ["positive", "neutral", "negative"]:
@@ -172,7 +172,7 @@ st.dataframe(scorecard, use_container_width=True)
 
 st.markdown("---")
 
-# ─── ROW 4: RAW DATA ──────────────────────────────────────
+#ROW 4: RAW DATA 
 st.subheader("📋 Raw Tweet Data")
 show_cols = ["airline", "airline_sentiment", "negativereason",
              "retweet_count", "text"]
@@ -182,7 +182,7 @@ st.dataframe(
     use_container_width=True
 )
 
-# ─── FOOTER ───────────────────────────────────────────────
+# FOOTER 
 st.markdown("---")
 st.markdown(
     "**Big Data Project** — Apache Spark 4.1.1 | MongoDB 7.0 | Streamlit"
