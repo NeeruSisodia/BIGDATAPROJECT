@@ -31,7 +31,7 @@ The pipeline covers:
 |--------|---------------|
 | Rabaya Khatun Keya | Data ingestion, cleaning & MongoDB storage |
 | Manasha Siriwardana Mudalige Don| Spark processing & transformations |
-| Md Firoz Chowdhury | MongoDB queries & indexing |
+| Md Firoz Chowdhury | MongoDB queries & indexing and others |
 | Neeru Neeru| Spark SQL queries & performance analysis, Visualization, report, dashboard & documentation also git process|
 
 ---
