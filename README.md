@@ -11,7 +11,7 @@
 
 ## 📌 Overview
 
-This project implements a complete **Big Data processing pipeline** using **Apache Spark** and **MongoDB** to ingest, process, analyze, and visualize large-scale Twitter data about US airline sentiment.
+This project demonstrates practical big data engineering and analytics skills using Apache Spark, MongoDB, and Streamlit. It focuses on distributed data processing, sentiment analysis, NoSQL database integration, performance benchmarking, and interactive dashboard visualization.
 
 The pipeline covers:
 - ✅ Data ingestion and cleaning using PySpark
@@ -67,6 +67,36 @@ The pipeline covers:
 | Jupyter Notebook | Latest | Development environment |
 
 ---
+
+---
+
+## 💡 Key Skills Demonstrated
+
+- Big data processing using Apache Spark (PySpark)
+- NoSQL database integration with MongoDB
+- Spark SQL query optimization and performance analysis
+- Data cleaning and preprocessing pipelines
+- Interactive dashboard development using Streamlit
+- Data visualization using Matplotlib and Plotly
+- Distributed analytics workflow design
+- Team collaboration using Git and GitHub
+
+  ---
+
+## 🔄 System Workflow
+
+```text
+CSV Dataset
+    ↓
+PySpark Data Cleaning
+    ↓
+MongoDB Storage & Indexing
+    ↓
+Spark SQL Analytics
+    ↓
+Visualization & Performance Analysis
+    ↓
+Streamlit Interactive Dashboard
 
 ## 📁 Project Structure
 
