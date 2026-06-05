@@ -239,6 +239,9 @@ Indexes (6 total):
 | Neutral | 3,069 | 21% |
 | Positive | 2,299 | 16% |
 
+<img width="251" height="152" alt="image" src="https://github.com/user-attachments/assets/43807534-8455-497e-a727-1d8fef971b90" />
+<img width="845" height="423" alt="image" src="https://github.com/user-attachments/assets/fef2c763-04c4-4733-9854-ed20e1765cd6" />
+
 ### Airline Rankings
 | Rank | Airline | Negative | Positive |
 |------|---------|----------|----------|
@@ -249,6 +252,9 @@ Indexes (6 total):
 | 5 | Delta | 953 | 544 |
 | 6 (Best) | Virgin America | 181 | 152 |
 
+<img width="925" height="465" alt="image" src="https://github.com/user-attachments/assets/1a4670a1-9567-438d-8155-22ed160b18bd" />
+
+
 ### Top Complaint Reasons
 | Rank | Reason | Count |
 |------|--------|-------|
@@ -257,6 +263,8 @@ Indexes (6 total):
 | 3 | Can't Tell | 1,175 |
 | 4 | Cancelled Flight | 829 |
 | 5 | Lost Luggage | 717 |
+<img width="975" height="577" alt="image" src="https://github.com/user-attachments/assets/9790bdab-7fcd-4ad3-a589-f7f15afffafa" />
+
 
 ---
 
@@ -267,6 +275,8 @@ Indexes (6 total):
 |------|---------|
 | MongoDB | Simple aggregations with indexed fields |
 | Spark SQL | Complex multi-column analytical queries |
+<img width="854" height="616" alt="image" src="https://github.com/user-attachments/assets/e2d61290-4b7b-4dd2-97cd-0c15f3d65e75" />
+
 
 ### Format Comparison — Bonus (Google Colab / Linux)
 | Format | Write Speed | Read Speed | File Size | Best For |
@@ -286,6 +296,8 @@ Indexes (6 total):
 - Airline scorecard table with positive/negative percentages
 - Raw data viewer with 100 tweets
 - Run with: `python -m streamlit run app.py`
+  <img width="975" height="447" alt="image" src="https://github.com/user-attachments/assets/7a60fa40-bfd6-489e-890d-9dc3641dc251" />
+
 
 ### ✅ Bonus 2 — Format Comparison (CSV vs Parquet vs Avro)
 - Tested on Google Colab (Linux environment)
